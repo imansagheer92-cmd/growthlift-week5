@@ -1,14 +1,16 @@
 import "./App.css";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/login";
+import Register from "./pages/Register";
 import TaskList from "./components/TaskList";
 
 function App() {
     return (
-        <BrowserRouter>
+        <>
             <h1>GrowthLift Task Manager</h1>
 
             <Routes>
@@ -18,14 +20,20 @@ function App() {
                 />
 
                 <Route
+                    path="/register"
+                    element={<Register />}
+                />
+
+                <Route
                     path="/"
-                    element={ <ProtectedRoute>
-                                <TaskList />
-                            </ProtectedRoute>
-                            }
+                    element={
+                        <ProtectedRoute>
+                            <TaskList />
+                        </ProtectedRoute>
+                    }
                 />
             </Routes>
-        </BrowserRouter>
+        </>
     );
 }
 
